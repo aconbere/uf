@@ -1,0 +1,18 @@
+#UF a Python Microformat Parser#
+
+## Description ##
+
+This is a microformat parsing tool for python that wrote a couple years ago and has been living mostly untouched at the Microformat google code project since then. The main goal was to expirement with reusing the parsing tools published by the community as XSL transforms to reduce the work required to cover all the formats.
+
+## Examples ##
+
+    > from uf import hCard
+    > card = hCard().parse("an hcard document")
+    > url = card.contents['url'][0].value
+    > email = card.contents['email'][0].value
+
+As you can see ... this expirement didn't return the most favorable results. The largest problem was my assumption that the tools for parsing the base formats, in particular vcard and vcal would be exceptional. When in fact they were mostly a pain in the butt, had bugs that needed to be negotiated etc. You can see this perfectly in the above example where the vcard parsing tools pulled for the voption package return a mess that amounts to a dom structure. In the case of hAtom (if that were working properly) this is awesome since Mark Pilgrims feedparser is great.
+
+## TODO ##
+
+* Somewhere in between writing this and now, the hatom2atom xsl file no longer parses hatom documents. I'm not really sure why (Investigation required!)
